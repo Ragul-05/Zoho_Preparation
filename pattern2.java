@@ -7,7 +7,7 @@ public class pattern2 {
       //      3 2 1 2 3
       //    4 3 2 1 2 3 4
       //  5 4 3 2 1 2 3 4 5
-        Scanner sc = new Scanner(System.in);
+       Scanner sc = new Scanner(System.in);
        int n = sc.nextInt();
         for(int i=1;i<=n;i++){
             int space = n -(i+2);
