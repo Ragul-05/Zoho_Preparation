@@ -1,16 +1,16 @@
 package BankApplication;
-
 public class TransactionManager {
-    public void deposit(BankAccount account, double amount) {
-        account.deposit(amount);
+    public void simulateTransactions(BankAccount account) {
+        account.deposit(1000);
+        account.withdraw(500);
+        account.withdraw(700); 
+        account.deposit(300);
+        account.withdraw(200);
     }
 
-    public void withdraw(BankAccount account, double amount) {
-        account.withdraw(amount);
+    public void printSummary(BankAccount account) {
+        System.out.println("Account Holder: " + account.getAccountHolder());
+        System.out.println("Final Balance: ₹" + account.getBalance());
+        account.printTransactionHistory();
     }
-
-    public void transfer(BankAccount account, String recipientAccountNumber, double amount) {
-        account.transfer(recipientAccountNumber, amount);
-    }
-    
 }

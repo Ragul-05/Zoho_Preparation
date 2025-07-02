@@ -1,54 +1,48 @@
 package BankApplication;
 
-public class BankAccount {
-    private String accountNumber;
-    private String customerName;
-    private double balance;
+import java.util.ArrayList;
 
-    public BankAccount(String accountNumber, String customerName, double balance) {
-        this.accountNumber = accountNumber;
-        this.customerName = customerName;
-        this.balance = balance;
+public class BankAccount {
+    private double balance;
+    private ArrayList<String> transactionHistory;
+    private String accountHolder;
+
+    public BankAccount(String accountHolder) {
+        this.accountHolder = accountHolder;
+        this.balance = 0.0;
+        this.transactionHistory = new ArrayList<>();
     }
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-    public String getCustomerName() {
-        return customerName;
-    }
-    public double getBalance() {
-        return balance;
-    }
+
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
+            transactionHistory.add("Deposited: ₹" + amount);
         } else {
-            System.out.println("Deposit amount must be positive.");
+            transactionHistory.add("Failed Deposit: Invalid amount ₹" + amount);
         }
     }
+
     public void withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
-        } else if (amount > balance) {
-            System.out.println("Insufficient funds for withdrawal.");
+            transactionHistory.add("Withdrawn: ₹" + amount);
         } else {
-            System.out.println("Withdrawal amount must be positive.");
+            transactionHistory.add("Failed Withdrawal: ₹" + amount);
         }
     }
-    public void transfer(String recipientAccountNumber, double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            System.out.println("Transferred " + amount + " to account " + recipientAccountNumber);
-        } else if (amount > balance) {
-            System.out.println("Insufficient funds for transfer.");
-        } else {
-            System.out.println("Transfer amount must be positive.");
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void printTransactionHistory() {
+        System.out.println("\nTransaction History for " + accountHolder + ":");
+        for (String transaction : transactionHistory) {
+            System.out.println(transaction);
         }
     }
-    @Override
-    public String toString() {
-        return "Account Number: " + accountNumber + ", Customer Name: " + customerName + ", Balance: " + balance;
+
+    public String getAccountHolder() {
+        return accountHolder;
     }
-    
-    
 }
