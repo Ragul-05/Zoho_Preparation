@@ -16,18 +16,18 @@ public class BankAccount {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            transactionHistory.add("Deposited: ₹" + amount);
+            transactionHistory.add("Deposited: Rs." + amount);
         } else {
-            transactionHistory.add("Failed Deposit: Invalid amount ₹" + amount);
+            transactionHistory.add("Failed Deposit: Invalid amount Rs." + amount);
         }
     }
 
     public void withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
-            transactionHistory.add("Withdrawn: ₹" + amount);
+            transactionHistory.add("Withdrawn: Rs." + amount);
         } else {
-            transactionHistory.add("Failed Withdrawal: ₹" + amount);
+            transactionHistory.add("Failed Withdrawal: Rs." + amount);
         }
     }
 

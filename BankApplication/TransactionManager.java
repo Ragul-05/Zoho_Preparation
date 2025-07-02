@@ -10,7 +10,7 @@ public class TransactionManager {
 
     public void printSummary(BankAccount account) {
         System.out.println("Account Holder: " + account.getAccountHolder());
-        System.out.println("Final Balance: ₹" + account.getBalance());
+        System.out.println("Final Balance: Rs." + account.getBalance());
         account.printTransactionHistory();
     }
 }
